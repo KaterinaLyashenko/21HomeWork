@@ -22,7 +22,7 @@ class BaseStorage(AbstarctStorage):
 
     def remove(self, name: str, amount: int) -> None:
     #Есть ли такой товар и хватает ли его на складе
-        if name not in self.__items[name] or self.__items[name] < amount:
+        if name not in self.__items or self.__items[name] < amount:
             raise NotEnoughProduct
     #Вычесть необходимое число товара.Если товара станет 0 - удалить его из списка
         self.__items[name] -= amount

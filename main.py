@@ -1,3 +1,5 @@
+from email import message
+
 from courier import Courier
 from exceptions import CourierError, RequestError
 from request import Request
@@ -40,8 +42,8 @@ shop.items = {
 }
 
 storages = {
-    'магазинe': shop,
-    'складe': store
+    'магазин': shop,
+    'склад': store
 }
 
 def main():
@@ -61,14 +63,13 @@ def main():
         try:
             request = Request(request=user_input, storages=storages)
         except RequestError as error:
-            print(error)
+            print(error, message)
             continue
 
         courier = Courier(
             request=request,
             storages=storages
         )
-
 
         try:
             courier.move()
